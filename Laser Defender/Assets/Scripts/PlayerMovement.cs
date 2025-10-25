@@ -32,9 +32,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 velocity = (moveInput.normalized * moveSpeed) - rb.linearVelocity;
-        rb.AddForce(velocity, ForceMode2D.Force);
+        Move();
     }
 
     private void OnMove(InputAction.CallbackContext ctx) => moveInput = ctx.ReadValue<Vector2>();
+
+    private void Move()
+    {
+        Vector2 velocity = (moveInput.normalized * moveSpeed) - rb.linearVelocity;
+        rb.AddForce(velocity, ForceMode2D.Force);
+    }
 }
