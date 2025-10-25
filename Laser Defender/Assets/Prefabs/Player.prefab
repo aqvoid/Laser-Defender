@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 624532528667389249}
   - component: {fileID: 3995069129493032466}
+  - component: {fileID: 2104293019390803778}
   - component: {fileID: 1705436219660985379}
   - component: {fileID: 432837755710515108}
   m_Layer: 0
@@ -138,6 +139,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 100
+--- !u!114 &2104293019390803778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9111877879559481104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab32046ba0d91304db348a2845b2aebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBounds
+  paddingTop: 2
+  paddingBottom: 2
+  paddingRight: 0.5
+  paddingLeft: 0.5
 --- !u!114 &1705436219660985379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,5 +210,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
