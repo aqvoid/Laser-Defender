@@ -9,10 +9,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveInput;
 
     private PlayerInput playerInput;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
@@ -30,8 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 delta = moveInput * moveSpeed * Time.fixedDeltaTime;
-        transform.position += delta;
+        Vector2 velocity = (moveInput.normalized * moveSpeed) - rb.linearVelocity;
+        rb.AddForce(velocity, ForceMode2D.Force);
     }
 
     private void OnMove(InputAction.CallbackContext ctx) => moveInput = ctx.ReadValue<Vector2>();
