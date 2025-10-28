@@ -3,13 +3,19 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
-    [SerializeField] private PathConfigSO pathConfig;
-
+    private EnemySpawner enemySpawner;
+    private PathConfigSO pathConfig;
     private List<Transform> waypoints;
     private int waypointIndex = 0;
 
+    private void Awake()
+    {
+        enemySpawner = FindFirstObjectByType<EnemySpawner>();
+    }
+
     private void Start()
     {
+        pathConfig = enemySpawner.GetCurrentPath();
         waypoints = pathConfig.GetWaypoints();
         transform.position = waypoints[waypointIndex].position;
     }
