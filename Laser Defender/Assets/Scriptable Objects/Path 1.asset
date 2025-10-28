@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 6544346554896157400, guid: 557f4031525c4bf4ba54c9183a862539, type: 3}
   pathPrefab: {fileID: 7497071350371587003, guid: 3d2e6288d5fe4504080803c757c3210e, type: 3}
-  moveSpeed: 7.5
-  enemySpawnDelay: 1
-  spawnTimeVariance: 1
+  moveSpeed: 10
+  enemySpawnDelay: 0.5
+  spawnTimeVariance: 0.25
   minSpawnTime: 0.1

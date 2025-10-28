@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool randomizeWaves;
     [SerializeField, Tooltip("if false, then every enemy is first indexed in prefab list from current path")] 
     private bool randomizeEnemies;
+    [SerializeField] private bool loopWaves;
 
     private PathConfigSO currentPath;
 
@@ -20,22 +21,27 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnWaves()
     {
-        foreach (PathConfigSO waves in pathConfigs)
+        do
         {
-            if (!randomizeWaves)
-                currentPath = waves;
-            else
-                currentPath = pathConfigs[Random.Range(0, pathConfigs.Count)];
-
-            for (int i = 0; i < enemiesNumberToSpawn; i++)
+            foreach (PathConfigSO waves in pathConfigs)
             {
-                if (!randomizeEnemies) SpawnFirstEnemy();
-                else SpawnRandomEnemy();
+                if (!randomizeWaves)
+                    currentPath = waves;
+                else
+                    currentPath = pathConfigs[Random.Range(0, pathConfigs.Count)];
 
-                yield return new WaitForSeconds(currentPath.GetRandomSpawnTime());
+                for (int i = 0; i < enemiesNumberToSpawn; i++)
+                {
+                    if (!randomizeEnemies) SpawnFirstEnemy();
+                    else SpawnRandomEnemy();
+
+                    yield return new WaitForSeconds(currentPath.GetRandomSpawnTime());
+                }
+                yield return new WaitForSeconds(timeBetweenWaves);
             }
-            yield return new WaitForSeconds(timeBetweenWaves);
         }
+        while (loopWaves);
+
     }
 
     private void SpawnRandomEnemy() => Instantiate(currentPath.GetRandomEnemy(), currentPath.GetStartingWaypoint().position, Quaternion.identity, transform);

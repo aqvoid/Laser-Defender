@@ -416,6 +416,7 @@ MonoBehaviour:
   enemiesNumberToSpawn: 5
   randomizeWaves: 1
   randomizeEnemies: 1
+  loopWaves: 0
 --- !u!4 &1425742961
 Transform:
   m_ObjectHideFlags: 0
