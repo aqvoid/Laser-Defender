@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -10,6 +11,7 @@ public class Health : MonoBehaviour
 
         if (damageDealer == null) return;
 
+        GetComponent<Particles>().PlayHitParticles();
         TakeDamage(damageDealer.GetDamage());
     }
 
