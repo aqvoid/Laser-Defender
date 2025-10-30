@@ -20,7 +20,7 @@ public class Pathfinder : MonoBehaviour
         transform.position = waypoints[waypointIndex].position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         FollowPath();
     }
