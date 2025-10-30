@@ -1,18 +1,12 @@
 using System.Collections;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : Attack
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float projectileSpeed;
-    [SerializeField] private float projectileLifetime;
-    [SerializeField] private float attackRate;
-
     private PlayerInput playerInput;
     private InputAction attackAction;
 
-    private Coroutine attackCoroutine;
+    private bool isAttacking;
 
     private void Awake()
     {
@@ -22,44 +16,42 @@ public class PlayerAttack : MonoBehaviour
     private void OnEnable()
     {
         attackAction = playerInput.actions["Attack"];
-        attackAction.started += OnAttackStarted;
-        attackAction.canceled += OnAttackCanceled;
+        attackAction.started += ctx => StartAttack();
+        attackAction.canceled += ctx => StopAttack();
     }
 
     private void OnDisable()
     {
-        attackAction.started -= OnAttackStarted;
-        attackAction.canceled -= OnAttackCanceled;
+        attackAction.started -= ctx => StartAttack();
+        attackAction.canceled -= ctx => StopAttack();
     }
 
-    private void OnAttackStarted(InputAction.CallbackContext ctx)
+    private IEnumerator AttackLoop()
     {
-        if (attackCoroutine == null)
+        while (isAttacking)
         {
-            attackCoroutine = StartCoroutine(AttackContinuously());
+            if (canAttack)
+            {
+                ShootProjectile(transform.up);
+                StartCoroutine(AttackCooldown());
+            }
+            yield return null;
         }
     }
 
-    private void OnAttackCanceled(InputAction.CallbackContext ctx)
+    protected override void StartAttack()
     {
-        if (attackCoroutine != null)
+        if (!isAttacking)
         {
-            StopCoroutine(attackCoroutine);
-            attackCoroutine = null;
+            isAttacking = true;
+            StartCoroutine(AttackLoop());
         }
     }
 
-    private IEnumerator AttackContinuously()
+    protected override void StopAttack()
     {
-        while (true)
-        {
-            GameObject instance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-
-            Rigidbody2D projectileRb = instance.GetComponent<Rigidbody2D>();
-            if (projectileRb != null) projectileRb.linearVelocity = transform.up * projectileSpeed;
-
-            Destroy(instance, projectileLifetime);
-            yield return new WaitForSeconds(attackRate);
-        }
+        isAttacking = false;
     }
+
+    
 }

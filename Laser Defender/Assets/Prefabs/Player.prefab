@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 624532528667389249}
   - component: {fileID: 7721056771738693190}
   - component: {fileID: -1515792491206823237}
-  - component: {fileID: 3743255054889722639}
+  - component: {fileID: 2878593850854397052}
   - component: {fileID: 3995069129493032466}
   - component: {fileID: 2104293019390803778}
   - component: {fileID: 1705436219660985379}
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
   damage: 100
---- !u!114 &3743255054889722639
+--- !u!114 &2878593850854397052
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,13 +165,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9111877879559481104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fedd665ab5f09ac4dacba355756c4c12, type: 3}
+  m_Script: {fileID: 11500000, guid: a9e6aa43a3209d14cad1554bb9218d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   projectilePrefab: {fileID: 3814505336258336862, guid: cd1e3ef582989f74e99f4477d234d959, type: 3}
-  projectileSpeed: 8
+  projectileSpeed: 15
   projectileLifetime: 1
-  attackRate: 0.2
+  projectileAttackRate: 0.2
 --- !u!114 &3995069129493032466
 MonoBehaviour:
   m_ObjectHideFlags: 0
