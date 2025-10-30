@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 814759218}
   - component: {fileID: 814759219}
   m_Layer: 0
-  m_Name: starfield
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +416,7 @@ MonoBehaviour:
   enemiesNumberToSpawn: 5
   randomizeWaves: 1
   randomizeEnemies: 1
-  loopWaves: 0
+  loopWaves: 1
 --- !u!4 &1425742961
 Transform:
   m_ObjectHideFlags: 0
