@@ -10,8 +10,19 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField] private AudioClip[] hitClips;
     [SerializeField, Range(0f, 1f)] private float hitVolume;
 
+    [Header("=== Background Music ===")]
+    [SerializeField, Range (0f, 1f)] private float musicVolume;
+
     [Header("=== References ===")]
     [SerializeField] private Health playerHealth;
+    
+    private AudioSource musicSource;
+
+    private void Start()
+    {
+        musicSource = GetComponent<AudioSource>();
+        musicSource.volume = musicVolume;
+    }
 
     private void OnEnable()
     {
