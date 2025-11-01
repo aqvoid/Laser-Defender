@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public abstract class Attack : MonoBehaviour
     [SerializeField] protected float projectileAttackRate;
     protected bool canAttack = true;
 
+    public static event Action OnShoot;
+
     protected abstract void StartAttack();
     protected abstract void StopAttack();
 
@@ -20,6 +23,8 @@ public abstract class Attack : MonoBehaviour
 
         if (projectileRb != null)
             projectileRb.linearVelocity = projectileDirection * projectileSpeed;
+
+        OnShoot?.Invoke();
 
         Destroy(instance, projectileLifetime);
     }

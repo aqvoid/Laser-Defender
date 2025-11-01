@@ -6,10 +6,11 @@ public class EnemyAttack : Attack
     [Header("=== Enemy Projectile Settings ===")]
     [SerializeField] private float minAttackRate;
     [SerializeField] private float attackRateVariance;
+    [SerializeField] private float delayStartShootingInSeconds;
 
     private void Start()
     {
-        StartAttack();
+        StartCoroutine(DelayStart());
     }
 
     protected override void StartAttack()
@@ -37,5 +38,11 @@ public class EnemyAttack : Attack
 
             yield return new WaitForSeconds(randomRate);
         }
+    }
+
+    private IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(delayStartShootingInSeconds);
+        StartAttack();
     }
  }
