@@ -6,7 +6,6 @@ public class Health : MonoBehaviour
     [SerializeField] private int healthPoints;
 
     public event Action OnDamaged;
-    public event Action OnDeath;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,7 +23,6 @@ public class Health : MonoBehaviour
 
         if (healthPoints <= 0)
         {
-            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

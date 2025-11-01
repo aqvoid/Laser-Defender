@@ -10,7 +10,7 @@ public class EnemyAttack : Attack
 
     private void Start()
     {
-        StartCoroutine(DelayStart());
+        StartAttack();
     }
 
     protected override void StartAttack()
@@ -25,6 +25,7 @@ public class EnemyAttack : Attack
 
     private IEnumerator AttackLoop()
     {
+        yield return new WaitForSeconds(delayStartShootingInSeconds);
         while (true)
         {
             if (canAttack)
@@ -37,12 +38,7 @@ public class EnemyAttack : Attack
             randomRate = Mathf.Clamp(randomRate, minAttackRate, float.MaxValue);
 
             yield return new WaitForSeconds(randomRate);
+            yield return new WaitForSeconds(delayStartShootingInSeconds);
         }
-    }
-
-    private IEnumerator DelayStart()
-    {
-        yield return new WaitForSeconds(delayStartShootingInSeconds);
-        StartAttack();
     }
  }
