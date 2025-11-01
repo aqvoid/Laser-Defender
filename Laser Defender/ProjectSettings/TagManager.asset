@@ -53,6 +53,9 @@ TagManager:
   - name: Player
     uniqueID: 3991707081
     locked: 0
+  - name: Explosion Particles
+    uniqueID: 2553271399
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

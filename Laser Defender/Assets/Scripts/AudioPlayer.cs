@@ -13,8 +13,6 @@ public class AudioPlayer : MonoBehaviour
     [Header("=== Background Music ===")]
     [SerializeField, Range (0f, 1f)] private float musicVolume;
 
-    [Header("=== References ===")]
-    [SerializeField] private Health playerHealth;
     
     private AudioSource musicSource;
 
@@ -27,26 +25,20 @@ public class AudioPlayer : MonoBehaviour
     private void OnEnable()
     {
         Attack.OnShoot += PlayShootingClip;
-        playerHealth.OnDamaged += PlayHitClip;
+        Health.OnAnybodyDamaged += PlayHitClip;
     }
 
     private void OnDisable()
     {
         Attack.OnShoot -= PlayShootingClip;
-        playerHealth.OnDamaged -= PlayHitClip;
+        Health.OnAnybodyDamaged -= PlayHitClip;
     }
 
     private AudioClip randomAudioClip(AudioClip[] audioClips) => audioClips[Random.Range(0, shootingClips.Length)];
 
-    public void PlayShootingClip()
-    {
-        PlayClip(shootingClips, shootingVolume);
-    }
+    public void PlayShootingClip() => PlayClip(shootingClips, shootingVolume);
 
-    public void PlayHitClip()
-    {
-        PlayClip(hitClips, hitVolume);
-    }
+    public void PlayHitClip() => PlayClip(hitClips, hitVolume);
 
     private void PlayClip(AudioClip[] audioClips, float volume)
     {

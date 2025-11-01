@@ -17,9 +17,9 @@ public class CameraShake : MonoBehaviour
         initialPosition = transform.position;
     }
 
-    private void OnEnable() => playerHealth.OnDamaged += PlayShaking;
+    private void OnEnable() => playerHealth.OnPlayerDamaged += PlayShaking;
 
-    private void OnDisable() => playerHealth.OnDamaged -= PlayShaking;
+    private void OnDisable() => playerHealth.OnPlayerDamaged -= PlayShaking;
 
     public void PlayShaking() => StartCoroutine(Shake());
 
