@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5931972016588193663}
   - component: {fileID: -6608985967793346757}
   - component: {fileID: 3459152379051990348}
+  - component: {fileID: -2623436908314955583}
   m_Layer: 7
   m_Name: Enemy 0
   m_TagString: Untagged
@@ -82,6 +83,7 @@ MonoBehaviour:
   projectileAttackRate: 0.5
   minAttackRate: 0.5
   attackRateVariance: 0.5
+  delayStartInSeconds: 0.5
 --- !u!114 &5931972016588193663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +159,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.3
+--- !u!114 &-2623436908314955583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544346554896157400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 010778eecf6c3d646a3716fccc36fdae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Particles
+  particles: {fileID: 6380330358885589012, guid: b5c8ab151845a9c4dba9b3f5031f2e32, type: 3}
 --- !u!1 &8933998893532561605
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,9 +248,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: -425084687
+  m_SortingLayer: 3
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 32075304dbd81a6458186d8ba8dcda3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

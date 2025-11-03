@@ -6,6 +6,7 @@ public class EnemyAttack : Attack
     [Header("=== Enemy Projectile Settings ===")]
     [SerializeField] private float minAttackRate;
     [SerializeField] private float attackRateVariance;
+    [SerializeField] private float delayStartShootingInSeconds;
 
     private void Start()
     {
@@ -24,6 +25,7 @@ public class EnemyAttack : Attack
 
     private IEnumerator AttackLoop()
     {
+        yield return new WaitForSeconds(delayStartShootingInSeconds);
         while (true)
         {
             if (canAttack)
@@ -36,6 +38,7 @@ public class EnemyAttack : Attack
             randomRate = Mathf.Clamp(randomRate, minAttackRate, float.MaxValue);
 
             yield return new WaitForSeconds(randomRate);
+            yield return new WaitForSeconds(delayStartShootingInSeconds);
         }
     }
  }
