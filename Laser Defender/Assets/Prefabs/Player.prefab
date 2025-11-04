@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerBounds
   paddingTop: 2
-  paddingBottom: 2
+  paddingBottom: 1.3
   paddingRight: 0.5
   paddingLeft: 0.5
 --- !u!114 &1705436219660985379
