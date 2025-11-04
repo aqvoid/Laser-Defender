@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   healthPoints: 100
+  entityType: 1
 --- !u!114 &738693989682477620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c805ec4c8e7f1344399670cce54995aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageDealer
-  damage: 50
+  damage: 100
 --- !u!114 &5990592398774741071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +84,7 @@ MonoBehaviour:
   projectileAttackRate: 0.5
   minAttackRate: 0.5
   attackRateVariance: 0.5
-  delayStartInSeconds: 0.5
+  delayStartShootingInSeconds: 0
 --- !u!114 &5931972016588193663
 MonoBehaviour:
   m_ObjectHideFlags: 0

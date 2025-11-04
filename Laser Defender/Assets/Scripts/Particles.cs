@@ -7,9 +7,17 @@ public class Particles : MonoBehaviour
 
     private void Awake() => health = GetComponent<Health>();
 
-    private void OnEnable() => health.OnPlayerDamaged += PlayHitParticles;
+    private void OnEnable()
+    {
+        health.OnPlayerDamaged += PlayHitParticles;
+        health.OnEnemyDamaged += PlayHitParticles;
+    }
 
-    private void OnDisable() => health.OnPlayerDamaged -= PlayHitParticles;
+    private void OnDisable()
+    {
+        health.OnPlayerDamaged -= PlayHitParticles;
+        health.OnEnemyDamaged -= PlayHitParticles;
+    }
 
     public void PlayHitParticles()
     {

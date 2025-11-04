@@ -4,10 +4,15 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int healthPoints;
-    [SerializeField] private bool isPlayer;
+    [SerializeField] private EntityType entityType;
+
+    private enum EntityType { Player, Enemy };
+
+    private int maxHealthPoints = 100;
 
     public static event Action OnAnybodyDamaged;
     public event Action OnPlayerDamaged;
+    public event Action OnEnemyDamaged;
 
     public static event Action OnPlayerDeath;
     public static event Action<Health> OnEnemyDeath;
@@ -23,21 +28,37 @@ public class Health : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        OnPlayerDamaged?.Invoke();
-        OnAnybodyDamaged?.Invoke();
         healthPoints -= damage;
+
+        switch (entityType)
+        {
+            case EntityType.Player:
+                OnPlayerDamaged?.Invoke();
+                break;
+            case EntityType.Enemy:
+                OnEnemyDamaged?.Invoke();
+                break;
+        }
+
+        OnAnybodyDamaged?.Invoke();
 
         if (healthPoints <= 0) Die();
     }
 
     private void Die()
     {
-        if (isPlayer)
-            OnPlayerDeath?.Invoke();
-        else
-            OnEnemyDeath?.Invoke(this);
+        switch (entityType)
+        {
+            case EntityType.Player:
+                OnPlayerDeath?.Invoke();
+                break;
+            case EntityType.Enemy:
+                OnEnemyDeath?.Invoke(null);
+                break;
+        }
         Destroy(gameObject);
     }
 
     public int GetHealth() => healthPoints;
+    public int GetMaxHealth() => maxHealthPoints;
 }
