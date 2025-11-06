@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
 
     [Header("=== References ===")]
     [SerializeField] private Health playerHealth;
-    [SerializeField] private ScoreKeeper scoreKeeper;
 
     private void Start()
     {
@@ -32,18 +31,9 @@ public class UIManager : MonoBehaviour
         Health.OnEnemyDeath -= UpdateScoreText;
     }
 
-    private void UpdateHealthBar()
-    {
-        healthBar.value = (float)playerHealth.GetHealth() / playerHealth.GetMaxHealth();
-    }
+    private void UpdateHealthBar() => healthBar.value = (float)playerHealth.GetHealth() / playerHealth.GetMaxHealth();
 
-    private void ResetHealthBar()
-    {
-        healthBar.value = 0f;
-    }
+    private void ResetHealthBar() => healthBar.value = 0f;
 
-    private void UpdateScoreText(Health enemy)
-    {
-        scoreText.text = $"Score: {scoreKeeper.GetScore()}";
-    }
+    private void UpdateScoreText(Health enemy) => scoreText.text = $"Score: {ScoreKeeper.Instance.GetScore()}";
 }

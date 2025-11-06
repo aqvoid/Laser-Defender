@@ -2,9 +2,23 @@ using UnityEngine;
 
 public class ScoreKeeper : MonoBehaviour
 {
+    public static ScoreKeeper Instance { get; private set; }
+
     [SerializeField] private int[] scoresFromEnemies;
 
     private int scorePoints;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void OnEnable()
     {
