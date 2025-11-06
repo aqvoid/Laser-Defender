@@ -1,24 +1,36 @@
 using UnityEngine;
 
-public class ScoreKeeper : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance { get; private set; }
+
     [SerializeField] private int[] scoresFromEnemies;
 
     private int scorePoints;
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void OnEnable()
     {
-        Health.OnEnemyDeath += OnEnemyDeath;
-        Health.OnPlayerDeath += ResetScore;
+        Health.OnEnemyDeath += AddScoreByEnemy;
     }
 
     private void OnDisable()
     {
-        Health.OnEnemyDeath -= OnEnemyDeath;
-        Health.OnPlayerDeath -= ResetScore;
+        Health.OnEnemyDeath -= AddScoreByEnemy;
     }
 
-    private void OnEnemyDeath(Health enemy)
+    private void AddScoreByEnemy(Health enemy)
     {
         int value = GetScoreFromEnemy(enemy);
         scorePoints += value;

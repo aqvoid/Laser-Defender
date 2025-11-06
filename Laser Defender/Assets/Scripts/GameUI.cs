@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
     [Header("=== UI Elements ===")]
     [SerializeField] private Slider healthBar;
@@ -10,10 +10,10 @@ public class UIManager : MonoBehaviour
 
     [Header("=== References ===")]
     [SerializeField] private Health playerHealth;
-    [SerializeField] private ScoreKeeper scoreKeeper;
 
     private void Start()
     {
+        ScoreManager.Instance.ResetScore();
         UpdateHealthBar();
         UpdateScoreText(null);
     }
@@ -32,18 +32,9 @@ public class UIManager : MonoBehaviour
         Health.OnEnemyDeath -= UpdateScoreText;
     }
 
-    private void UpdateHealthBar()
-    {
-        healthBar.value = (float)playerHealth.GetHealth() / playerHealth.GetMaxHealth();
-    }
+    private void UpdateHealthBar() => healthBar.value = (float)playerHealth.GetHealth() / playerHealth.GetMaxHealth();
 
-    private void ResetHealthBar()
-    {
-        healthBar.value = 0f;
-    }
+    private void ResetHealthBar() => healthBar.value = 0f;
 
-    private void UpdateScoreText(Health enemy)
-    {
-        scoreText.text = $"Score: {scoreKeeper.GetScore()}";
-    }
+    private void UpdateScoreText(Health enemy) => scoreText.text = $"Score: {ScoreManager.Instance.GetScore()}";
 }

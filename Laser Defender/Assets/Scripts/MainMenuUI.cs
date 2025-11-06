@@ -1,0 +1,13 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MainMenuUI : MonoBehaviour
+{
+    [SerializeField] private Button startButton;
+
+    private void Start() => startButton.onClick.AddListener(StartGame);
+
+    public void StartGame() => LevelManager.Instance.LoadGame();
+
+    public void QuitGame() => Application.Quit();
+}
