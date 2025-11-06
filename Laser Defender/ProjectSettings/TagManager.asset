@@ -56,6 +56,9 @@ TagManager:
   - name: Explosion Particles
     uniqueID: 2553271399
     locked: 0
+  - name: Camera
+    uniqueID: 2778152943
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
