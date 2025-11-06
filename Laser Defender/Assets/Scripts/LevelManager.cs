@@ -32,11 +32,14 @@ public class LevelManager : MonoBehaviour
     }
 
     public void LoadMainMenu() => SceneManager.LoadScene("Main Menu");
-    public void LoadGame() => SceneManager.LoadScene("Game");
-    public void LoadGameOver() => StartCoroutine(SceneLoadDelay("Game Over", sceneLoadDelayInSeconds));
-
-
-    public void QuitGame() => Application.Quit();
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("Game");
+    }
+    public void LoadGameOver()
+    {
+        StartCoroutine(SceneLoadDelay("Game Over", sceneLoadDelayInSeconds));
+    }
 
     private IEnumerator SceneLoadDelay(string sceneName, float delay)
     {

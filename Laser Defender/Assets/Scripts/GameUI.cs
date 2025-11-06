@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
     [Header("=== UI Elements ===")]
     [SerializeField] private Slider healthBar;
