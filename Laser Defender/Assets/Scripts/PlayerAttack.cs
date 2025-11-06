@@ -16,15 +16,18 @@ public class PlayerAttack : Attack
     private void OnEnable()
     {
         attackAction = playerInput.actions["Attack"];
-        attackAction.started += ctx => StartAttack();
-        attackAction.canceled += ctx => StopAttack();
+        attackAction.started += OnAttackStarted;
+        attackAction.canceled += OnAttackCanceled;
     }
 
     private void OnDisable()
     {
-        attackAction.started -= ctx => StartAttack();
-        attackAction.canceled -= ctx => StopAttack();
+        attackAction.started -= OnAttackStarted;
+        attackAction.canceled -= OnAttackCanceled;
     }
+
+    private void OnAttackStarted(InputAction.CallbackContext ctx) => StartAttack();
+    private void OnAttackCanceled(InputAction.CallbackContext ctx) => StopAttack();
 
     private IEnumerator AttackLoop()
     {
