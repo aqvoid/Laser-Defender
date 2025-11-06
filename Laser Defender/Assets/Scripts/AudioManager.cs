@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AudioPlayer : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public static AudioPlayer Instance { get; private set; }
+    public static AudioManager Instance { get; private set; }
 
     [Header("=== Shooting ===")]
     [SerializeField] private AudioClip[] shootingClips;

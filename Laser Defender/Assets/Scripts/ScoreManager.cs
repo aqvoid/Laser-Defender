@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class ScoreKeeper : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
-    public static ScoreKeeper Instance { get; private set; }
+    public static ScoreManager Instance { get; private set; }
 
     [SerializeField] private int[] scoresFromEnemies;
 
@@ -22,17 +22,15 @@ public class ScoreKeeper : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.OnEnemyDeath += OnEnemyDeath;
-        Health.OnPlayerDeath += ResetScore;
+        Health.OnEnemyDeath += AddScoreByEnemy;
     }
 
     private void OnDisable()
     {
-        Health.OnEnemyDeath -= OnEnemyDeath;
-        Health.OnPlayerDeath -= ResetScore;
+        Health.OnEnemyDeath -= AddScoreByEnemy;
     }
 
-    private void OnEnemyDeath(Health enemy)
+    private void AddScoreByEnemy(Health enemy)
     {
         int value = GetScoreFromEnemy(enemy);
         scorePoints += value;

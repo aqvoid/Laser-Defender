@@ -3,16 +3,10 @@ using UnityEngine;
 
 public class GameOverUI : MonoBehaviour
 {
-    private TextMeshProUGUI scoreResultText;
+    [SerializeField] private TextMeshProUGUI scoreResultText;
 
-    private void Awake()
-    {
-        scoreResultText = GetComponent<TextMeshProUGUI>();
-    }
+    private void Start() => scoreResultText.text = $"You Scored:\n{ScoreManager.Instance.GetScore()}";
 
-    private void Start()
-    {
-        scoreResultText.text = $"You Scored:\n{ScoreKeeper.Instance.GetScore()}";
-    }
-
+    public void RestartButton() => LevelManager.Instance.LoadGame();
+    public void MainMenuButton() => LevelManager.Instance.LoadMainMenu();
 }

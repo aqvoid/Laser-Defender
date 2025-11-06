@@ -13,6 +13,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
+        ScoreManager.Instance.ResetScore();
         UpdateHealthBar();
         UpdateScoreText(null);
     }
@@ -35,5 +36,5 @@ public class GameUI : MonoBehaviour
 
     private void ResetHealthBar() => healthBar.value = 0f;
 
-    private void UpdateScoreText(Health enemy) => scoreText.text = $"Score: {ScoreKeeper.Instance.GetScore()}";
+    private void UpdateScoreText(Health enemy) => scoreText.text = $"Score: {ScoreManager.Instance.GetScore()}";
 }

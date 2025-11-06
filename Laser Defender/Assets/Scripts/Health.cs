@@ -53,7 +53,7 @@ public class Health : MonoBehaviour
                 OnPlayerDeath?.Invoke();
                 break;
             case EntityType.Enemy:
-                OnEnemyDeath?.Invoke(null);
+                OnEnemyDeath?.Invoke(this);
                 break;
         }
         Destroy(gameObject);
