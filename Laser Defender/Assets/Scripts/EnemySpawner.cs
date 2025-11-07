@@ -6,7 +6,6 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<PathConfigSO> pathConfigs;
     [SerializeField] private float timeBetweenWaves;
-    [SerializeField] private int enemiesNumberToSpawn;
     [SerializeField] private bool randomizeWaves;
     [SerializeField, Tooltip("if false, then every enemy is first indexed in prefab list from current path")] 
     private bool randomizeEnemies;
@@ -30,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
                 else
                     currentPath = pathConfigs[Random.Range(0, pathConfigs.Count)];
 
-                for (int i = 0; i < enemiesNumberToSpawn; i++)
+                for (int i = 0; i < currentPath.GetEnemiesNumber(); i++)
                 {
                     if (!randomizeEnemies) SpawnFirstEnemy();
                     else SpawnRandomEnemy();
