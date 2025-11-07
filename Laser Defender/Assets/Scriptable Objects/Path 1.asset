@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Path 1
   m_EditorClassIdentifier: Assembly-CSharp::PathConfigSO
   enemyPrefabs:
-  - {fileID: 6544346554896157400, guid: 557f4031525c4bf4ba54c9183a862539, type: 3}
+  - {fileID: 6544346554896157400, guid: 4cf082913416c054597960a71df76cb5, type: 3}
   pathPrefab: {fileID: 7497071350371587003, guid: 3d2e6288d5fe4504080803c757c3210e, type: 3}
-  moveSpeed: 10
-  enemySpawnDelay: 0.5
-  spawnTimeVariance: 0.25
+  moveSpeed: 15
+  enemySpawnDelay: 0.35
+  spawnTimeVariance: 0.5
   minSpawnTime: 0.1

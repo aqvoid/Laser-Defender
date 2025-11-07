@@ -17,6 +17,8 @@ public class Health : MonoBehaviour
     public static event Action OnPlayerDeath;
     public static event Action<Health> OnEnemyDeath;
 
+    private void Awake() => maxHealthPoints = healthPoints;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
