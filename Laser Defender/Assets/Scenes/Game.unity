@@ -838,6 +838,7 @@ MonoBehaviour:
   pathConfigs:
   - {fileID: 11400000, guid: 4a7d6317fc3eedd488c701638e5aaa45, type: 2}
   - {fileID: 11400000, guid: 180d085e0b4218646bf77f27538ccb04, type: 2}
+  - {fileID: 11400000, guid: 6f25ffe61ecded34ea571fe7c601598c, type: 2}
   timeBetweenWaves: 2
   enemiesNumberToSpawn: 10
   randomizeWaves: 1

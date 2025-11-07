@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba51235e074a0b4d9be92535d1605cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreKeeper
-  scoresFromEnemies: 3200000019000000
+  scoresFromEnemies: 320000001900000096000000
