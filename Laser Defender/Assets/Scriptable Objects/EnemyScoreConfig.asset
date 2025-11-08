@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef3b9379861bf04b91c2f9c402055e2, type: 3}
+  m_Name: EnemyScoreConfig
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyScoreSO
+  enemyScores:
+  - enemyPrefab: {fileID: 6544346554896157400, guid: 557f4031525c4bf4ba54c9183a862539, type: 3}
+    score: 50
+  - enemyPrefab: {fileID: 6544346554896157400, guid: 4cf082913416c054597960a71df76cb5, type: 3}
+    score: 25
+  - enemyPrefab: {fileID: 6544346554896157400, guid: 99d1fcaef6ccb044db2fb3e159cbba18, type: 3}
+    score: 75

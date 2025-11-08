@@ -4,7 +4,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
-    [SerializeField] private int[] scoresFromEnemies;
+    [SerializeField] private EnemyScoreSO enemyScoreConfig;
 
     private int scorePoints;
 
@@ -32,15 +32,10 @@ public class ScoreManager : MonoBehaviour
 
     private void AddScoreByEnemy(Health enemy)
     {
-        int value = GetScoreFromEnemy(enemy);
+        int value = enemyScoreConfig.GetScoreByEnemy(enemy.gameObject);
         scorePoints += value;
 
         Mathf.Clamp(scorePoints, 0, int.MaxValue);
-    }
-
-    private int GetScoreFromEnemy(Health enemy)
-    {
-        return scoresFromEnemies[0];
     }
 
     public int GetScore() => scorePoints;
