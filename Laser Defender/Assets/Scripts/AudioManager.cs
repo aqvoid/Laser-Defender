@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class AudioPlayer : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+
     [Header("=== Shooting ===")]
     [SerializeField] private AudioClip[] shootingClips;
     [SerializeField, Range(0f, 1f)] private float shootingVolume;
@@ -15,6 +17,18 @@ public class AudioPlayer : MonoBehaviour
 
     
     private AudioSource musicSource;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
