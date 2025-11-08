@@ -143,8 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f86d7b64cf73d204ba32ed03e3f9040f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  healthPoints: 100
-  isPlayer: 1
+  healthPoints: 200
+  entityType: 0
 --- !u!114 &-1515792491206823237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   projectilePrefab: {fileID: 3814505336258336862, guid: cd1e3ef582989f74e99f4477d234d959, type: 3}
   projectileSpeed: 15
-  projectileLifetime: 1
+  projectileLifetime: 2
   projectileAttackRate: 0.2
 --- !u!114 &3995069129493032466
 MonoBehaviour:

@@ -7,6 +7,7 @@ public class PathConfigSO : ScriptableObject
     [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private Transform pathPrefab;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private int enemiesNumberToSpawn;
     [SerializeField] private float enemySpawnDelay = 1f;
     [SerializeField] private float spawnTimeVariance = 0f;
     [SerializeField] private float minSpawnTime = 0.2f;
@@ -35,5 +36,7 @@ public class PathConfigSO : ScriptableObject
     }
 
     public GameObject GetRandomEnemy() => GetEnemyPrefab(Random.Range(0, GetEnemyCount()));
-    public GameObject GetFirstEnemy() => GetEnemyPrefab(0); 
+    public GameObject GetFirstEnemy() => GetEnemyPrefab(0);
+
+    public int GetEnemiesNumber() => enemiesNumberToSpawn;
 }
