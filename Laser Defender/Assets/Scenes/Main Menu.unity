@@ -1071,6 +1071,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3081311391620855529, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
+      propertyPath: toGameDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081311391620855529, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
+      propertyPath: toGameOverDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081311391620855529, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
+      propertyPath: toMainMenuDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3777175102189185578, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1328,6 +1340,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2537531893880124026, guid: e28db0edbb1d312459fc8455e8ce872f, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 199d7a09a9d0b18489155b150558423a, type: 3}
     - target: {fileID: 6931097428696546194, guid: e28db0edbb1d312459fc8455e8ce872f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1367,6 +1383,10 @@ PrefabInstance:
     - target: {fileID: 6931097428696546194, guid: e28db0edbb1d312459fc8455e8ce872f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053782885933212945, guid: e28db0edbb1d312459fc8455e8ce872f, type: 3}
+      propertyPath: musicVolume
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

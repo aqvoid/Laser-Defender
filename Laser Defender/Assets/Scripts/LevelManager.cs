@@ -7,7 +7,9 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     [Header("=== General ===")]
-    [SerializeField] private float sceneLoadDelayInSeconds;
+    [SerializeField] private float toMainMenuDelay;
+    [SerializeField] private float toGameDelay;
+    [SerializeField] private float toGameOverDelay;
 
     private void Awake()
     {
@@ -31,13 +33,21 @@ public class LevelManager : MonoBehaviour
         Health.OnPlayerDeath -= LoadGameOver;
     }
 
-    public void LoadMainMenu() => SceneManager.LoadScene("Main Menu");
-    public void LoadGame() => SceneManager.LoadScene("Game");
-    public void LoadGameOver() => StartCoroutine(SceneLoadDelay("Game Over", sceneLoadDelayInSeconds));
+    public void LoadMainMenu() => StartCoroutine(TransitionToScene("Main Menu", toMainMenuDelay));
 
-    private IEnumerator SceneLoadDelay(string sceneName, float delay)
+    public void LoadGame() => StartCoroutine(TransitionToScene("Game", toGameDelay));
+
+    public void LoadGameOver() => StartCoroutine(TransitionToScene("Game Over", toGameOverDelay));
+
+    private IEnumerator TransitionToScene(string sceneName, float delay)
     {
-        yield return new WaitForSeconds(delay);
+        AudioManager currentAudio = FindFirstObjectByType<AudioManager>();
+        yield return StartCoroutine(currentAudio.FadeOutMusic(delay));
+
         SceneManager.LoadScene(sceneName);
+        yield return null;
+
+        AudioManager newAudio = FindFirstObjectByType<AudioManager>();
+        yield return StartCoroutine(newAudio.FadeInMusic(delay));
     }
 }

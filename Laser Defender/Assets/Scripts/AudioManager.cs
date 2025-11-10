@@ -1,9 +1,8 @@
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance { get; private set; }
-
     [Header("=== Shooting ===")]
     [SerializeField] private AudioClip[] shootingClips;
     [SerializeField, Range(0f, 1f)] private float shootingVolume;
@@ -13,22 +12,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float hitVolume;
 
     [Header("=== Background Music ===")]
-    [SerializeField, Range (0f, 1f)] private float musicVolume;
+    [SerializeField, Range(0f, 1f)] private float musicVolume;
 
-    
+
     private AudioSource musicSource;
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Start()
     {
@@ -70,5 +57,38 @@ public class AudioManager : MonoBehaviour
             source.Play();
             Destroy(audio, randomAudioClip(audioClips).length);
         }
+    }
+
+    public IEnumerator FadeOutMusic(float duration)
+    {
+        float startVolume = musicSource.volume;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / duration);
+            yield return null;
+        }
+        
+        musicSource.volume = 0f;
+        musicSource.Pause();
+    }
+
+    public IEnumerator FadeInMusic(float duration)
+    {
+        musicSource.UnPause();
+
+        float startVolume = 0f;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, musicVolume, elapsed / duration);
+            yield return null;
+        }
+
+        musicSource.volume = musicVolume;
     }
 }
