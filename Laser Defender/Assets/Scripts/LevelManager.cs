@@ -23,31 +23,35 @@ public class LevelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    private void OnEnable()
-    {
-        Health.OnPlayerDeath += LoadGameOver;
-    }
+    private void OnEnable() => Health.OnPlayerDeath += LoadGameOver;
 
-    private void OnDisable()
-    {
-        Health.OnPlayerDeath -= LoadGameOver;
-    }
-
-    public void LoadMainMenu() => StartCoroutine(TransitionToScene("Main Menu", toMainMenuDelay));
-
-    public void LoadGame() => StartCoroutine(TransitionToScene("Game", toGameDelay));
-
-    public void LoadGameOver() => StartCoroutine(TransitionToScene("Game Over", toGameOverDelay));
+    private void OnDisable() => Health.OnPlayerDeath -= LoadGameOver;
 
     private IEnumerator TransitionToScene(string sceneName, float delay)
     {
-        MusicManager currentAudio = FindFirstObjectByType<MusicManager>();
-        yield return StartCoroutine(currentAudio.FadeOutMusic(delay));
+        yield return StartCoroutine(FadeOut(delay));
 
         SceneManager.LoadScene(sceneName);
         yield return null;
 
+        yield return StartCoroutine(FadeIn(delay));
+    }
+
+    private IEnumerator FadeOut(float delay)
+    {
+        MusicManager currentAudio = FindFirstObjectByType<MusicManager>();
+        yield return StartCoroutine(ScreenFader.Instance.FadeOut(delay));
+        yield return StartCoroutine(currentAudio.FadeOutMusic(delay * 1.1f));
+    }
+
+    private IEnumerator FadeIn(float delay)
+    {
         MusicManager newAudio = FindFirstObjectByType<MusicManager>();
+        StartCoroutine(ScreenFader.Instance.FadeIn(delay));
         yield return StartCoroutine(newAudio.FadeInMusic(delay));
     }
+
+    public void LoadMainMenu() => StartCoroutine(TransitionToScene("Main Menu", toMainMenuDelay));
+    public void LoadGame() => StartCoroutine(TransitionToScene("Game", toGameDelay));
+    public void LoadGameOver() => StartCoroutine(TransitionToScene("Game Over", toGameOverDelay));
 }

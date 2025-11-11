@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   toMainMenuDelay: 1
-  toGameDelay: 2
+  toGameDelay: 1
   toGameOverDelay: 1
