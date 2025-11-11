@@ -39,7 +39,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        Vector2 newPos = rb.position + moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(newPos);
+        float threshold = Mathf.Epsilon;
+
+        if (moveInput.magnitude > threshold)
+        {
+            moveInput = moveInput.normalized * ((moveInput.magnitude - threshold) / (1f - threshold));
+            Vector2 newPos = rb.position + moveInput * moveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPos);
+        }
     }
 }
