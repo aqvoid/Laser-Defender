@@ -1,7 +1,6 @@
 using UnityEngine;
-using System.Collections;
 
-public class AudioManager : MonoBehaviour
+public class SFXManager : MonoBehaviour
 {
     [Header("=== Shooting ===")]
     [SerializeField] private AudioClip[] shootingClips;
@@ -10,18 +9,6 @@ public class AudioManager : MonoBehaviour
     [Header("=== Someone Got Hit ===")]
     [SerializeField] private AudioClip[] hitClips;
     [SerializeField, Range(0f, 1f)] private float hitVolume;
-
-    [Header("=== Background Music ===")]
-    [SerializeField, Range(0f, 1f)] private float musicVolume;
-
-
-    private AudioSource musicSource;
-
-    private void Start()
-    {
-        musicSource = GetComponent<AudioSource>();
-        musicSource.volume = musicVolume;
-    }
 
     private void OnEnable()
     {
@@ -57,38 +44,5 @@ public class AudioManager : MonoBehaviour
             source.Play();
             Destroy(audio, randomAudioClip(audioClips).length);
         }
-    }
-
-    public IEnumerator FadeOutMusic(float duration)
-    {
-        float startVolume = musicSource.volume;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            musicSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / duration);
-            yield return null;
-        }
-        
-        musicSource.volume = 0f;
-        musicSource.Pause();
-    }
-
-    public IEnumerator FadeInMusic(float duration)
-    {
-        musicSource.UnPause();
-
-        float startVolume = 0f;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            musicSource.volume = Mathf.Lerp(startVolume, musicVolume, elapsed / duration);
-            yield return null;
-        }
-
-        musicSource.volume = musicVolume;
     }
 }

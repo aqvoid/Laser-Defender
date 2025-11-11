@@ -41,13 +41,13 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator TransitionToScene(string sceneName, float delay)
     {
-        AudioManager currentAudio = FindFirstObjectByType<AudioManager>();
+        MusicManager currentAudio = FindFirstObjectByType<MusicManager>();
         yield return StartCoroutine(currentAudio.FadeOutMusic(delay));
 
         SceneManager.LoadScene(sceneName);
         yield return null;
 
-        AudioManager newAudio = FindFirstObjectByType<AudioManager>();
+        MusicManager newAudio = FindFirstObjectByType<MusicManager>();
         yield return StartCoroutine(newAudio.FadeInMusic(delay));
     }
 }
