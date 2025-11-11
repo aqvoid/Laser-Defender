@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
         if (damageDealer == null) return;
+        else if (damageDealer.CompareTag("Projectile")) Destroy(damageDealer.gameObject);
 
         int damage = damageDealer.GetDamage();
         TakeDamage(damage);
