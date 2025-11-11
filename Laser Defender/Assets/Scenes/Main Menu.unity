@@ -1071,18 +1071,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 3081311391620855529, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
-      propertyPath: toGameDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3081311391620855529, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
-      propertyPath: toGameOverDelay
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3081311391620855529, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
-      propertyPath: toMainMenuDelay
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3777175102189185578, guid: b0b8935f051a8644191a8d2159565d69, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

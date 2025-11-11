@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac2e815ab75c8bb4fafa5af907bab7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  sceneLoadDelayInSeconds: 2
+  toMainMenuDelay: 1
+  toGameDelay: 2
+  toGameOverDelay: 1

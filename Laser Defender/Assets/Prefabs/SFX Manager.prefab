@@ -44,12 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9d77ef371d25084da5c79ac0b634075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
-  shootingClips:
-  - {fileID: 8300000, guid: 9415258251d96a24d8553b841f31622e, type: 3}
-  - {fileID: 8300000, guid: bed88129059c12a4f959bb856ec8d657, type: 3}
-  shootingVolume: 0.1
-  hitClips:
-  - {fileID: 8300000, guid: 75da92d92322b43479c1908d1eccbb1f, type: 3}
-  - {fileID: 8300000, guid: a8350ec7a7f00554f8c2bffba78f28e6, type: 3}
-  - {fileID: 8300000, guid: 1c64a2eb244541b4097a8e5b840e78d5, type: 3}
-  hitVolume: 0.1
+  sFXConfig: {fileID: 11400000, guid: a1c3685b09ba7444087fbfdc0dc69dfc, type: 2}
+  shootingVolume: 0.08
+  hitVolume: 0.06
+  crushVolume: 0.2
