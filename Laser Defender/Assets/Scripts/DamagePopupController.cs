@@ -1,9 +1,9 @@
-using TMPro;
 using UnityEngine;
 
 public class DamagePopupController : MonoBehaviour
 {
     [SerializeField] private GameObject popup;
+
     private Health entityHealth;
     private GameObject popupParent;
 
@@ -15,20 +15,17 @@ public class DamagePopupController : MonoBehaviour
 
     private void OnEnable()
     {
-        entityHealth.OnEntityDamaged += SpawnText;
+        entityHealth.OnEntityDamaged += SpawnPopup;
     }
     private void OnDisable()
     {
-        entityHealth.OnEntityDamaged -= SpawnText;
+        entityHealth.OnEntityDamaged -= SpawnPopup;
     }
 
-    private void SpawnText(Health entityHealth, int damage)
+    private void SpawnPopup(Health entityHealth, int damage)
     {
         GameObject prefab = Instantiate(popup, entityHealth.transform.position, Quaternion.identity, popupParent.transform);
-        prefab.GetComponent<TextMeshProUGUI>().text = entityHealth.GetComponent<DamageDealer>().GetDamage().ToString();
-        print("spawned");
 
-        Destroy(prefab, 10f);
+        prefab.GetComponent<DamagePopup>().Animate(damage);
     }
-
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4253103999343218148}
   - component: {fileID: 323241087533458157}
   - component: {fileID: 8957433025883183584}
+  - component: {fileID: 4088115745107579091}
   m_Layer: 5
   m_Name: Damage Dealt Text
   m_TagString: Untagged
@@ -136,3 +137,15 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &4088115745107579091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819067377882601757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67ccd2d192a4b84da3b7401f8e3c6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagePopup
