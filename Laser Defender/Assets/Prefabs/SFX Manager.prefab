@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1666370716755798314
+--- !u!1 &549775830533957343
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3777175102189185578}
-  - component: {fileID: 3081311391620855529}
+  - component: {fileID: 6931097428696546194}
+  - component: {fileID: 8053782885933212945}
   m_Layer: 0
-  m_Name: Level Manager
+  m_Name: SFX Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3777175102189185578
+--- !u!4 &6931097428696546194
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666370716755798314}
+  m_GameObject: {fileID: 549775830533957343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,18 +32,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3081311391620855529
+--- !u!114 &8053782885933212945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666370716755798314}
+  m_GameObject: {fileID: 549775830533957343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2e815ab75c8bb4fafa5af907bab7cf, type: 3}
+  m_Script: {fileID: 11500000, guid: a9d77ef371d25084da5c79ac0b634075, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  toMainMenuDelay: 1
-  toGameDelay: 1
-  toGameOverDelay: 1
+  m_EditorClassIdentifier: Assembly-CSharp::AudioPlayer
+  sFXConfig: {fileID: 11400000, guid: a1c3685b09ba7444087fbfdc0dc69dfc, type: 2}
+  shootingVolume: 0.08
+  hitVolume: 0.06
+  crushVolume: 0.2

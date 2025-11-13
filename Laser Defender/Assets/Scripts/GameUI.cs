@@ -8,31 +8,32 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    [Header("=== References ===")]
-    [SerializeField] private Health playerHealth;
+    private Health playerHealth;
+
+    private void Awake() => playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
 
     private void Start()
     {
         ScoreManager.Instance.ResetScore();
-        UpdateHealthBar();
+        UpdateHealthBar(playerHealth, 0);
         UpdateScoreText(null);
     }
 
     private void OnEnable()
     {
-        playerHealth.OnPlayerDamaged += UpdateHealthBar;
+        playerHealth.OnEntityDamaged += UpdateHealthBar;
         Health.OnPlayerDeath += ResetHealthBar;
         Health.OnEnemyDeath += UpdateScoreText;
     }
 
     private void OnDisable()
     {
-        playerHealth.OnPlayerDamaged -= UpdateHealthBar;
+        playerHealth.OnEntityDamaged -= UpdateHealthBar;
         Health.OnPlayerDeath -= ResetHealthBar;
         Health.OnEnemyDeath -= UpdateScoreText;
     }
 
-    private void UpdateHealthBar() => healthBar.value = (float)playerHealth.GetHealth() / playerHealth.GetMaxHealth();
+    private void UpdateHealthBar(Health health, int damage) => healthBar.value = (float)playerHealth.GetHealth() / playerHealth.GetMaxHealth();
 
     private void ResetHealthBar() => healthBar.value = 0f;
 
