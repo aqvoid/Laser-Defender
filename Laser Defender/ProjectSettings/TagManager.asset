@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Projectile
   - Game Canvas
+  - Popup Pool
   layers:
   - Default
   - TransparentFX

@@ -5,12 +5,14 @@ using System.Collections;
 public class DamagePopup : MonoBehaviour
 {
     private TextMeshProUGUI tmp;
+    private DamagePopupPooling pool;
 
     private void Awake() => tmp = GetComponent<TextMeshProUGUI>();
 
-    public void Animate(int damage)
+    public void Animate(int damage, DamagePopupPooling pool)
     {
-        tmp.text = damage.ToString();
+        this.pool = pool;
+        tmp.text = "-" + damage.ToString();
         StartCoroutine(PopupAnimationOut());
     }
 
@@ -22,6 +24,9 @@ public class DamagePopup : MonoBehaviour
         float startAlpha = tmp.alpha;
         float targetAlpha = 0f;
 
+        Vector2 startPos = transform.position;
+        Vector2 endPos = startPos + Vector2.up; 
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
@@ -29,6 +34,7 @@ public class DamagePopup : MonoBehaviour
             yield return null;
         }
 
-        Destroy(tmp.gameObject);
+        pool.ReturnPopupToPool(gameObject);
+        tmp.alpha = startAlpha;
     }
 }

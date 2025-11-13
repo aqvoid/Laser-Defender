@@ -2,30 +2,26 @@ using UnityEngine;
 
 public class DamagePopupController : MonoBehaviour
 {
-    [SerializeField] private GameObject popup;
-
+    private DamagePopupPooling pool;
     private Health entityHealth;
-    private GameObject popupParent;
 
     private void Awake()
     {
+        pool = GameObject.FindGameObjectWithTag("Popup Pool").GetComponent<DamagePopupPooling>();
         entityHealth = GetComponent<Health>();
-        popupParent = GameObject.FindGameObjectWithTag("Game Canvas");
     }
 
-    private void OnEnable()
-    {
-        entityHealth.OnEntityDamaged += SpawnPopup;
-    }
-    private void OnDisable()
-    {
-        entityHealth.OnEntityDamaged -= SpawnPopup;
-    }
+    private void OnEnable() => entityHealth.OnEntityDamaged += SpawnPopup;
+    private void OnDisable() => entityHealth.OnEntityDamaged -= SpawnPopup;
 
     private void SpawnPopup(Health entityHealth, int damage)
     {
-        GameObject prefab = Instantiate(popup, entityHealth.transform.position, Quaternion.identity, popupParent.transform);
+        GameObject popup = pool.GetPopupFromPool();
+        popup.transform.position = entityHealth.transform.position;
 
-        prefab.GetComponent<DamagePopup>().Animate(damage);
+        if (entityHealth.gameObject.CompareTag("Player")) popup.transform.localScale = Vector2.one * 1.5f;
+        else popup.transform.localScale = Vector2.one;
+
+        popup.GetComponent<DamagePopup>().Animate(damage, pool);
     }
 }
