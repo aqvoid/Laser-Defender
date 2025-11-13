@@ -27,10 +27,15 @@ public class DamagePopup : MonoBehaviour
         Vector2 startPos = transform.position;
         Vector2 endPos = startPos + Vector2.up; 
 
+        float rndAngle = Random.Range(-10f, 10f);
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            tmp.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsed / duration);
+            float t = Mathf.SmoothStep(0f, 1f, elapsed / duration);
+            tmp.alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
+            transform.position = Vector2.Lerp(startPos, endPos, t);
+            transform.rotation = Quaternion.Euler(0f, 0f, rndAngle);
             yield return null;
         }
 
