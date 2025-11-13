@@ -11,8 +11,7 @@ public class Health : MonoBehaviour
     private int maxHealthPoints = 100;
 
     public static event Action OnAnybodyDamaged;
-    public event Action OnPlayerDamaged;
-    public event Action OnEnemyDamaged;
+    public event Action<Health, int> OnEntityDamaged;
 
     public static event Action OnPlayerDeath;
     public static event Action<Health> OnEnemyDeath;
@@ -33,15 +32,7 @@ public class Health : MonoBehaviour
     {
         healthPoints -= damage;
 
-        switch (entityType)
-        {
-            case EntityType.Player:
-                OnPlayerDamaged?.Invoke();
-                break;
-            case EntityType.Enemy:
-                OnEnemyDamaged?.Invoke();
-                break;
-        }
+        OnEntityDamaged?.Invoke(this, damage);
 
         OnAnybodyDamaged?.Invoke();
 

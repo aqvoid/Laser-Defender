@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Projectile
+  - Game Canvas
+  - Popup Pool
   layers:
   - Default
   - TransparentFX

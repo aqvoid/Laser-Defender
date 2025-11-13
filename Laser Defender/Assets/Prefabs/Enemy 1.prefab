@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6608985967793346757}
   - component: {fileID: 3459152379051990348}
   - component: {fileID: -2623436908314955583}
+  - component: {fileID: -2451816948558262208}
   m_Layer: 7
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -173,6 +174,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Particles
   particles: {fileID: 6380330358885589012, guid: b5c8ab151845a9c4dba9b3f5031f2e32, type: 3}
+--- !u!114 &-2451816948558262208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544346554896157400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84a722f9f9b8a24889a98eb61971019, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamagePopupController
+  popup: {fileID: 3819067377882601757, guid: 236a764af59873043a715eb48a2e2310, type: 3}
 --- !u!1 &8933998893532561605
 GameObject:
   m_ObjectHideFlags: 0

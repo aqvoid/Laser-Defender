@@ -6,22 +6,23 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float shakeDuration;
     [SerializeField] private float shakeMagnitude;
 
-    [Header("=== References ===")]
-    [SerializeField] private Health playerHealth;
+    private Health playerHealth;
 
     private Vector3 initialPosition;
 
+    private void Awake() => playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+    
 
     private void Start()
     {
         initialPosition = transform.position;
     }
 
-    private void OnEnable() => playerHealth.OnPlayerDamaged += PlayShaking;
+    private void OnEnable() => playerHealth.OnEntityDamaged += PlayShaking;
 
-    private void OnDisable() => playerHealth.OnPlayerDamaged -= PlayShaking;
+    private void OnDisable() => playerHealth.OnEntityDamaged -= PlayShaking;
 
-    public void PlayShaking() => StartCoroutine(Shake());
+    public void PlayShaking(Health health, int damage) => StartCoroutine(Shake());
 
     private IEnumerator Shake()
     {

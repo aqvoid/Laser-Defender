@@ -3,25 +3,16 @@ using UnityEngine;
 public class Particles : MonoBehaviour
 {
     [SerializeField] private ParticleSystem particles;
-    private Health health;
+    private Health entityHealth;
 
-    private void Awake() => health = GetComponent<Health>();
+    private void Awake() => entityHealth = GetComponent<Health>();
 
-    private void OnEnable()
+    private void OnEnable() => entityHealth.OnEntityDamaged += PlayHitParticles;
+    private void OnDisable() => entityHealth.OnEntityDamaged -= PlayHitParticles;
+
+    public void PlayHitParticles(Health health, int damage)
     {
-        health.OnPlayerDamaged += PlayHitParticles;
-        health.OnEnemyDamaged += PlayHitParticles;
-    }
-
-    private void OnDisable()
-    {
-        health.OnPlayerDamaged -= PlayHitParticles;
-        health.OnEnemyDamaged -= PlayHitParticles;
-    }
-
-    public void PlayHitParticles()
-    {
-        ParticleSystem instance = Instantiate(particles, transform.position, Quaternion.identity);
+        ParticleSystem instance = Instantiate(particles, health.transform.position, Quaternion.identity);
         Destroy(instance.gameObject, instance.main.duration + instance.main.startLifetime.constantMax);
     }
 }
